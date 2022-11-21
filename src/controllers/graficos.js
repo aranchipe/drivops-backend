@@ -1,4 +1,5 @@
 const knex = require("../database/connection");
+
 const vendaDeCadaVendedor = async (req, res) => {
   try {
     const vendaDeCadaVendedor = await knex

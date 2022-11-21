@@ -4,12 +4,6 @@ const { schemaCadastroCarro } = require("../validations/schemaCadastroCarro");
 const cadastrarCarro = async (req, res) => {
   const { modelo, marca, cor, ano, preco, quantidade } = req.body;
 
-  /* if (!modelo || !marca || !cor || !ano || !preco || !quantidade) {
-    return res
-      .status(400)
-      .json({ mensagem: "Todos os campos são obrigatórios" });
-  } */
-
   try {
     await schemaCadastroCarro.validate(req.body);
 
@@ -54,12 +48,6 @@ const atualizarCarro = async (req, res) => {
   const { id } = req.params;
   const { modelo, marca, cor, ano, preco, quantidade } = req.body;
 
-  /*  if (!modelo || !marca || !cor || !ano || !preco || !quantidade) {
-    return res
-      .status(400)
-      .json({ mensagem: "Todos os campos são obrigatórios" });
-  } */
-
   try {
     await schemaCadastroCarro.validate(req.body);
 
@@ -77,7 +65,7 @@ const atualizarCarro = async (req, res) => {
       return res.status(400).json({ mensagem: "Carro já cadastrado" });
     }
 
-    const carroAtualizado = await knex("carros")
+    await knex("carros")
       .update({
         modelo,
         marca,

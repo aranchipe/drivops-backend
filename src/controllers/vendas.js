@@ -36,7 +36,7 @@ const cadastrarVenda = async (req, res) => {
       data,
       carro_id,
       valor,
-      mes: new Date(data).getMonth(),
+      mes: new Date(data).getMonth() + 1,
     });
 
     if (vendaCadastrada.length === 0) {
